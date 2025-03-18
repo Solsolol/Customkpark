@@ -1,0 +1,76 @@
+{
+	"key": "2c3339e3-e57b-4005-b5d6-8b514f820008",
+	"metaData": {
+		"icon": "images/icon.png",
+		"iconSmall": "images/icon_small.png",
+		"category": "message",
+		"isConfigured": "false",
+		"configOnDrop": "true"
+	},
+	"type": "REST",
+	"lang": {
+		"en-US": {
+			"name": "Postal Mail - Neotouch",
+			"description": "Activity to send postal mail to customer using data from Salesforce and a document template"
+		},
+		"fr-FR": {
+			"name": "Courrier Postal - Neotouch",
+			"description": "Activité permettant d'envoyer un courrier postal au client à partir des données provenant de Salesforce et d'un modèle de document"
+		}
+	},
+	"workflowApiVersion": "1.1",
+	"configurationArguments": {
+		"applicationExtensionKey": "2c3339e3-e57b-4005-b5d6-8b514f820008",
+		"save": {
+			"url": "https://kpark-merkure.azurewebsites.net/neotouch/save",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true
+		},
+		"publish": {
+			"url": "https://kpark-merkure.azurewebsites.net/neotouch/publish",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true
+		},
+		"validate": {
+			"url": "https://kpark-merkure.azurewebsites.net/neotouch/validate",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true
+		}
+	},
+	"wizardSteps": [
+		{"key": "techSelection", "label": "Carbone & Salesforce"},
+		{"key": "postageSelection", "label": "Affranchissement"},
+		{"key": "printSelection", "label": "Impression & autre"}
+	],
+	"userInterfaces": {
+		"runningModal": {
+			"url": "runningModal.html"
+		},
+		"runningHover": {
+			"url": "runningHover.html"
+		}
+	},
+	"arguments": {
+		"execute": {
+			"inArguments": [],
+			"outArguments": [],
+			"url": "https://kpark-merkure.azurewebsites.net/neotouch/execute",
+			"verb": "POST",
+			"body": "",
+			"header": "",
+			"format": "json",
+			"useJwt": true,
+			"timeout": 90000,
+			"retryCount": 5,
+			"retryDelay": 100
+		}
+	},
+	"edit": {
+		"url": "https://kpark-merkure.azurewebsites.net/index.html",
+		"height": 600,
+		"width": 800
+	}
+}

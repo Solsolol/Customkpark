@@ -1,0 +1,1075 @@
+<?xml version="1.0"?>
+<!--
+Esker Web Services API Version 1.0
+Generated on Mon Dec 16 18:07:53 UTC+0100 2013
+Copyright 2011 Esker Software.
+All Rights Reserved
+-->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:QueryService2" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:QueryService2" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:QueryService2" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<s:element name="QueryFirst">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="request" type="s0:QueryRequest"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryFirstResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:QueryResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryLast">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="request" type="s0:QueryRequest"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryLastResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:QueryResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryNext">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="request" type="s0:QueryRequest"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryNextResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:QueryResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryPrevious">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="request" type="s0:QueryRequest"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryPreviousResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:QueryResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttributes">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="request" type="s0:QueryRequest"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttributesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:QueryAttributesResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttachments">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="transportID" type="s:string"/>
+						<s:element name="eFilter" type="s0:ATTACHMENTS_FILTER"/>
+						<s:element name="eMode" type="s0:WSFILE_MODE"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttachmentsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:Attachments"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryStatistics">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="filter" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryStatisticsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:StatisticsResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Delete">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DeleteResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Cancel">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="CancelResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Resubmit">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="params" type="s0:ResubmitParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ResubmitResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Update">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="params" type="s0:UpdateParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Approve">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="reason" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ApproveResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Reject">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="reason" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RejectResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="wsFile" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:base64Binary"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFileChunk">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="wsFile" type="s0:WSFile"/>
+						<s:element name="uPos" type="s:unsignedInt"/>
+						<s:element name="uChunkSize" type="s:unsignedInt"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFileChunkResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:base64Binary"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryGDRConfigState">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="configName" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryGDRConfigStateResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryProcessList">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryProcessListResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ProcessListResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateDataFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="params" type="s0:UpdateParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateDataFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ApproveAndUpdateDataFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="identifier" type="s:string"/>
+						<s:element name="reason" type="s:string"/>
+						<s:element name="params" type="s0:UpdateParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ApproveAndUpdateDataFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ActionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttachmentVars">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="transportID" type="s:string"/>
+						<s:element name="recipientType" type="s:string"/>
+						<s:element name="attachmentIndex" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="QueryAttachmentVarsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:AttachmentVarsResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:simpleType name="ATTACHMENTS_FILTER">
+				<s:restriction base="s:string">
+					<s:enumeration value="FILTER_NONE"/>
+					<s:enumeration value="FILTER_ALL"/>
+					<s:enumeration value="FILTER_CONVERTED"/>
+					<s:enumeration value="FILTER_SOURCE"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:simpleType name="WSFILE_MODE">
+				<s:restriction base="s:string">
+					<s:enumeration value="MODE_UNDEFINED"/>
+					<s:enumeration value="MODE_ON_SERVER"/>
+					<s:enumeration value="MODE_INLINED"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:simpleType name="VAR_TYPE">
+				<s:restriction base="s:string">
+					<s:enumeration value="TYPE_STRING"/>
+					<s:enumeration value="TYPE_DATETIME"/>
+					<s:enumeration value="TYPE_DOUBLE"/>
+					<s:enumeration value="TYPE_INTEGER"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="UpdateParameters">
+				<s:sequence>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Transport">
+				<s:sequence>
+					<s:element name="transportID" type="s:string"/>
+					<s:element name="transportName" type="s:string"/>
+					<s:element name="recipientType" type="s:string"/>
+					<s:element name="state" type="s:int"/>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nSubnodes" type="s:int"/>
+					<s:element name="subnodes" atls:SizeIs="nSubnodes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="SubNode" type="s0:SubNode" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ResubmitParameters">
+				<s:sequence>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryAttributesResult">
+				<s:sequence>
+					<s:element name="nAttributes" type="s:int"/>
+					<s:element name="attributes" atls:SizeIs="nAttributes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Var">
+				<s:sequence>
+					<s:element name="attribute" type="s:string"/>
+					<s:element name="type" type="s0:VAR_TYPE"/>
+					<s:element name="simpleValue" type="s:string"/>
+					<s:element name="nValues" type="s:int"/>
+					<s:element name="multipleStringValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="multipleLongValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="int" type="s:int" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="multipleDoubleValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="double" type="s:double" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Attachment">
+				<s:sequence>
+					<s:element name="inputFormat" type="s:string"/>
+					<s:element name="outputFormat" type="s:string"/>
+					<s:element name="stylesheet" type="s:string"/>
+					<s:element name="outputName" type="s:string"/>
+					<s:element name="sourceAttachment" type="s0:WSFile"/>
+					<s:element name="nConvertedAttachments" type="s:int"/>
+					<s:element name="convertedAttachments" atls:SizeIs="nConvertedAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="WSFile" type="s0:WSFile" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Process">
+				<s:sequence>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SessionHeader">
+				<s:sequence>
+					<s:element name="sessionID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SubNode">
+				<s:sequence>
+					<s:element name="name" type="s:string"/>
+					<s:element name="relativeName" type="s:string"/>
+					<s:element name="nSubnodes" type="s:int"/>
+					<s:element name="subNodes" atls:SizeIs="nSubnodes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="AttachmentVarsResult">
+				<s:sequence>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="StatisticsResult">
+				<s:sequence>
+					<s:element name="nTypes" type="s:int"/>
+					<s:element name="typeName" atls:SizeIs="nTypes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="typeContent" atls:SizeIs="nTypes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="StatisticsLine" type="s0:StatisticsLine" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="WSFile">
+				<s:sequence>
+					<s:element name="name" type="s:string"/>
+					<s:element name="mode" type="s0:WSFILE_MODE"/>
+					<s:element name="content" type="s:base64Binary"/>
+					<s:element name="url" type="s:string"/>
+					<s:element name="storageID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="StatisticsLine">
+				<s:sequence>
+					<s:element name="nStates" type="s:int"/>
+					<s:element name="states" atls:SizeIs="nStates" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="int" type="s:int" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="counts" atls:SizeIs="nStates" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="int" type="s:int" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryRecipientType">
+				<s:sequence>
+					<s:element name="recipientType" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryOptions">
+				<s:sequence>
+					<s:element name="options" type="s:int"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryRequest">
+				<s:sequence>
+					<s:element name="filter" type="s:string"/>
+					<s:element name="sortOrder" type="s:string"/>
+					<s:element name="attributes" type="s:string"/>
+					<s:element name="nItems" type="s:int"/>
+					<s:element name="includeSubNodes" type="s:boolean"/>
+					<s:element name="searchInArchive" type="s:boolean"/>
+					<s:element name="fileRefMode" type="s0:WSFILE_MODE"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryHeader">
+				<s:sequence>
+					<s:element name="queryID" type="s:string" nillable="true"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ProcessListResult">
+				<s:sequence>
+					<s:element name="nProcess" type="s:int"/>
+					<s:element name="processes" atls:SizeIs="nProcess" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Process" type="s0:Process" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ActionResult">
+				<s:sequence>
+					<s:element name="nSucceeded" type="s:int"/>
+					<s:element name="nFailed" type="s:int"/>
+					<s:element name="nItem" type="s:int"/>
+					<s:element name="transportIDs" atls:SizeIs="nItem" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="errorReason" atls:SizeIs="nItem" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Attachments">
+				<s:sequence>
+					<s:element name="nAttachments" type="s:int"/>
+					<s:element name="attachments" atls:SizeIs="nAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Attachment" type="s0:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="QueryResult">
+				<s:sequence>
+					<s:element name="noMoreItems" type="s:boolean"/>
+					<s:element name="nTransports" type="s:int"/>
+					<s:element name="transports" atls:SizeIs="nTransports" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Transport" type="s0:Transport" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="QueryRecipientTypeValue" type="s0:QueryRecipientType"/>
+			<s:element name="SessionHeaderValue" type="s0:SessionHeader"/>
+			<s:element name="QueryOptionsValue" type="s0:QueryOptions"/>
+			<s:element name="QueryHeaderValue" type="s0:QueryHeader"/>
+		</s:schema>
+	</types>
+	<message name="QueryFirstIn">
+		<part name="parameters" element="s0:QueryFirst"/>
+	</message>
+	<message name="QueryFirstOut">
+		<part name="parameters" element="s0:QueryFirstResponse"/>
+	</message>
+	<message name="QueryLastIn">
+		<part name="parameters" element="s0:QueryLast"/>
+	</message>
+	<message name="QueryLastOut">
+		<part name="parameters" element="s0:QueryLastResponse"/>
+	</message>
+	<message name="QueryNextIn">
+		<part name="parameters" element="s0:QueryNext"/>
+	</message>
+	<message name="QueryNextOut">
+		<part name="parameters" element="s0:QueryNextResponse"/>
+	</message>
+	<message name="QueryPreviousIn">
+		<part name="parameters" element="s0:QueryPrevious"/>
+	</message>
+	<message name="QueryPreviousOut">
+		<part name="parameters" element="s0:QueryPreviousResponse"/>
+	</message>
+	<message name="QueryAttributesIn">
+		<part name="parameters" element="s0:QueryAttributes"/>
+	</message>
+	<message name="QueryAttributesOut">
+		<part name="parameters" element="s0:QueryAttributesResponse"/>
+	</message>
+	<message name="QueryAttachmentsIn">
+		<part name="parameters" element="s0:QueryAttachments"/>
+	</message>
+	<message name="QueryAttachmentsOut">
+		<part name="parameters" element="s0:QueryAttachmentsResponse"/>
+	</message>
+	<message name="QueryStatisticsIn">
+		<part name="parameters" element="s0:QueryStatistics"/>
+	</message>
+	<message name="QueryStatisticsOut">
+		<part name="parameters" element="s0:QueryStatisticsResponse"/>
+	</message>
+	<message name="DeleteIn">
+		<part name="parameters" element="s0:Delete"/>
+	</message>
+	<message name="DeleteOut">
+		<part name="parameters" element="s0:DeleteResponse"/>
+	</message>
+	<message name="CancelIn">
+		<part name="parameters" element="s0:Cancel"/>
+	</message>
+	<message name="CancelOut">
+		<part name="parameters" element="s0:CancelResponse"/>
+	</message>
+	<message name="ResubmitIn">
+		<part name="parameters" element="s0:Resubmit"/>
+	</message>
+	<message name="ResubmitOut">
+		<part name="parameters" element="s0:ResubmitResponse"/>
+	</message>
+	<message name="UpdateIn">
+		<part name="parameters" element="s0:Update"/>
+	</message>
+	<message name="UpdateOut">
+		<part name="parameters" element="s0:UpdateResponse"/>
+	</message>
+	<message name="ApproveIn">
+		<part name="parameters" element="s0:Approve"/>
+	</message>
+	<message name="ApproveOut">
+		<part name="parameters" element="s0:ApproveResponse"/>
+	</message>
+	<message name="RejectIn">
+		<part name="parameters" element="s0:Reject"/>
+	</message>
+	<message name="RejectOut">
+		<part name="parameters" element="s0:RejectResponse"/>
+	</message>
+	<message name="DownloadFileIn">
+		<part name="parameters" element="s0:DownloadFile"/>
+	</message>
+	<message name="DownloadFileOut">
+		<part name="parameters" element="s0:DownloadFileResponse"/>
+	</message>
+	<message name="DownloadFileChunkIn">
+		<part name="parameters" element="s0:DownloadFileChunk"/>
+	</message>
+	<message name="DownloadFileChunkOut">
+		<part name="parameters" element="s0:DownloadFileChunkResponse"/>
+	</message>
+	<message name="QueryGDRConfigStateIn">
+		<part name="parameters" element="s0:QueryGDRConfigState"/>
+	</message>
+	<message name="QueryGDRConfigStateOut">
+		<part name="parameters" element="s0:QueryGDRConfigStateResponse"/>
+	</message>
+	<message name="QueryProcessListIn">
+		<part name="parameters" element="s0:QueryProcessList"/>
+	</message>
+	<message name="QueryProcessListOut">
+		<part name="parameters" element="s0:QueryProcessListResponse"/>
+	</message>
+	<message name="UpdateDataFileIn">
+		<part name="parameters" element="s0:UpdateDataFile"/>
+	</message>
+	<message name="UpdateDataFileOut">
+		<part name="parameters" element="s0:UpdateDataFileResponse"/>
+	</message>
+	<message name="ApproveAndUpdateDataFileIn">
+		<part name="parameters" element="s0:ApproveAndUpdateDataFile"/>
+	</message>
+	<message name="ApproveAndUpdateDataFileOut">
+		<part name="parameters" element="s0:ApproveAndUpdateDataFileResponse"/>
+	</message>
+	<message name="QueryAttachmentVarsIn">
+		<part name="parameters" element="s0:QueryAttachmentVars"/>
+	</message>
+	<message name="QueryAttachmentVarsOut">
+		<part name="parameters" element="s0:QueryAttachmentVarsResponse"/>
+	</message>
+	<message name="QueryRecipientTypeValue">
+		<part name="QueryRecipientTypeValue" element="s0:QueryRecipientTypeValue"/>
+	</message>
+	<message name="SessionHeaderValue">
+		<part name="SessionHeaderValue" element="s0:SessionHeaderValue"/>
+	</message>
+	<message name="QueryOptionsValue">
+		<part name="QueryOptionsValue" element="s0:QueryOptionsValue"/>
+	</message>
+	<message name="QueryHeaderValue">
+		<part name="QueryHeaderValue" element="s0:QueryHeaderValue"/>
+	</message>
+	<portType name="QueryServiceSoap">
+		<operation name="QueryFirst">
+			<input message="s0:QueryFirstIn"/>
+			<output message="s0:QueryFirstOut"/>
+		</operation>
+		<operation name="QueryLast">
+			<input message="s0:QueryLastIn"/>
+			<output message="s0:QueryLastOut"/>
+		</operation>
+		<operation name="QueryNext">
+			<input message="s0:QueryNextIn"/>
+			<output message="s0:QueryNextOut"/>
+		</operation>
+		<operation name="QueryPrevious">
+			<input message="s0:QueryPreviousIn"/>
+			<output message="s0:QueryPreviousOut"/>
+		</operation>
+		<operation name="QueryAttributes">
+			<input message="s0:QueryAttributesIn"/>
+			<output message="s0:QueryAttributesOut"/>
+		</operation>
+		<operation name="QueryAttachments">
+			<input message="s0:QueryAttachmentsIn"/>
+			<output message="s0:QueryAttachmentsOut"/>
+		</operation>
+		<operation name="QueryStatistics">
+			<input message="s0:QueryStatisticsIn"/>
+			<output message="s0:QueryStatisticsOut"/>
+		</operation>
+		<operation name="Delete">
+			<input message="s0:DeleteIn"/>
+			<output message="s0:DeleteOut"/>
+		</operation>
+		<operation name="Cancel">
+			<input message="s0:CancelIn"/>
+			<output message="s0:CancelOut"/>
+		</operation>
+		<operation name="Resubmit">
+			<input message="s0:ResubmitIn"/>
+			<output message="s0:ResubmitOut"/>
+		</operation>
+		<operation name="Update">
+			<input message="s0:UpdateIn"/>
+			<output message="s0:UpdateOut"/>
+		</operation>
+		<operation name="Approve">
+			<input message="s0:ApproveIn"/>
+			<output message="s0:ApproveOut"/>
+		</operation>
+		<operation name="Reject">
+			<input message="s0:RejectIn"/>
+			<output message="s0:RejectOut"/>
+		</operation>
+		<operation name="DownloadFile">
+			<input message="s0:DownloadFileIn"/>
+			<output message="s0:DownloadFileOut"/>
+		</operation>
+		<operation name="DownloadFileChunk">
+			<input message="s0:DownloadFileChunkIn"/>
+			<output message="s0:DownloadFileChunkOut"/>
+		</operation>
+		<operation name="QueryGDRConfigState">
+			<input message="s0:QueryGDRConfigStateIn"/>
+			<output message="s0:QueryGDRConfigStateOut"/>
+		</operation>
+		<operation name="QueryProcessList">
+			<input message="s0:QueryProcessListIn"/>
+			<output message="s0:QueryProcessListOut"/>
+		</operation>
+		<operation name="UpdateDataFile">
+			<input message="s0:UpdateDataFileIn"/>
+			<output message="s0:UpdateDataFileOut"/>
+		</operation>
+		<operation name="ApproveAndUpdateDataFile">
+			<input message="s0:ApproveAndUpdateDataFileIn"/>
+			<output message="s0:ApproveAndUpdateDataFileOut"/>
+		</operation>
+		<operation name="QueryAttachmentVars">
+			<input message="s0:QueryAttachmentVarsIn"/>
+			<output message="s0:QueryAttachmentVarsOut"/>
+		</operation>
+	</portType>
+	<binding name="QueryServiceSoap" type="s0:QueryServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="QueryFirst">
+			<soap:operation soapAction="#QueryFirst" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryOptionsValue" part="QueryOptionsValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:QueryHeaderValue" part="QueryHeaderValue"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryLast">
+			<soap:operation soapAction="#QueryLast" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryOptionsValue" part="QueryOptionsValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:QueryHeaderValue" part="QueryHeaderValue"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryNext">
+			<soap:operation soapAction="#QueryNext" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryHeaderValue" part="QueryHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryOptionsValue" part="QueryOptionsValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryPrevious">
+			<soap:operation soapAction="#QueryPrevious" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryHeaderValue" part="QueryHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryOptionsValue" part="QueryOptionsValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAttributes">
+			<soap:operation soapAction="#QueryAttributes" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAttachments">
+			<soap:operation soapAction="#QueryAttachments" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryStatistics">
+			<soap:operation soapAction="#QueryStatistics" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Delete">
+			<soap:operation soapAction="#Delete" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Cancel">
+			<soap:operation soapAction="#Cancel" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Resubmit">
+			<soap:operation soapAction="#Resubmit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Update">
+			<soap:operation soapAction="#Update" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Approve">
+			<soap:operation soapAction="#Approve" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Reject">
+			<soap:operation soapAction="#Reject" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DownloadFile">
+			<soap:operation soapAction="#DownloadFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DownloadFileChunk">
+			<soap:operation soapAction="#DownloadFileChunk" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryGDRConfigState">
+			<soap:operation soapAction="#QueryGDRConfigState" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryProcessList">
+			<soap:operation soapAction="#QueryProcessList" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UpdateDataFile">
+			<soap:operation soapAction="#UpdateDataFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ApproveAndUpdateDataFile">
+			<soap:operation soapAction="#ApproveAndUpdateDataFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:QueryRecipientTypeValue" part="QueryRecipientTypeValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAttachmentVars">
+			<soap:operation soapAction="#QueryAttachmentVars" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="QueryService">
+		<port name="QueryServiceSoap" binding="s0:QueryServiceSoap">
+			<soap:address location="https://we4.ondemand.esker.com:443/EDPWS/EDPWS.dll?Handler=Query2Handler"/>
+		</port>
+	</service>
+</definitions>

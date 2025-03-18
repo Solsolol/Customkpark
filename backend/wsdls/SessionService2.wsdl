@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<!--
+Esker Web Services API Version 1.0
+Generated on Tue Jun 3 16:44:43 UTC+0200 2014
+Copyright 2011 Esker Software.
+All Rights Reserved
+-->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:SessionService2" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:SessionService2" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:SessionService2" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<s:element name="GetBindings">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="reserved" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBindingsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:BindingResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Login">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="userName" type="s:string"/>
+						<s:element name="password" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LoginResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:LoginResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Logout">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LogoutResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetServiceInformation">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="language" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetServiceInformationResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ServiceInformation"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSessionInformation">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSessionInformationResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:SessionInformation"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOtherUserDisplayName">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="loginId" type="s:string"/>
+						<s:element name="addressBook" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOtherUserDisplayNameResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="IsPermissionGranted">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="permissionDN" type="s:string"/>
+						<s:element name="permissionRight" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="IsPermissionGrantedResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:boolean"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetServiceBindingUrl">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="serviceName" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetServiceBindingUrlResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="SessionHeader">
+				<s:sequence>
+					<s:element name="sessionID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="BindingResult">
+				<s:sequence>
+					<s:element name="sessionServiceLocation" type="s:string"/>
+					<s:element name="submissionServiceLocation" type="s:string"/>
+					<s:element name="queryServiceLocation" type="s:string"/>
+					<s:element name="sessionServiceWSDL" type="s:string"/>
+					<s:element name="submissionServiceWSDL" type="s:string"/>
+					<s:element name="queryServiceWSDL" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ServiceInformation">
+				<s:sequence>
+					<s:element name="message" type="s:string"/>
+					<s:element name="details" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="LoginResult">
+				<s:sequence>
+					<s:element name="sessionID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SessionInformation">
+				<s:sequence>
+					<s:element name="login" type="s:string"/>
+					<s:element name="identifier" type="s:string"/>
+					<s:element name="account" type="s:string"/>
+					<s:element name="name" type="s:string"/>
+					<s:element name="company" type="s:string"/>
+					<s:element name="email" type="s:string"/>
+					<s:element name="culture" type="s:string"/>
+					<s:element name="timeZone" type="s:string"/>
+					<s:element name="language" type="s:string"/>
+					<s:element name="filesPath" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="SessionHeaderValue" type="s0:SessionHeader"/>
+		</s:schema>
+	</types>
+	<message name="GetBindingsIn">
+		<part name="parameters" element="s0:GetBindings"/>
+	</message>
+	<message name="GetBindingsOut">
+		<part name="parameters" element="s0:GetBindingsResponse"/>
+	</message>
+	<message name="LoginIn">
+		<part name="parameters" element="s0:Login"/>
+	</message>
+	<message name="LoginOut">
+		<part name="parameters" element="s0:LoginResponse"/>
+	</message>
+	<message name="LogoutIn">
+		<part name="parameters" element="s0:Logout"/>
+	</message>
+	<message name="LogoutOut">
+		<part name="parameters" element="s0:LogoutResponse"/>
+	</message>
+	<message name="GetServiceInformationIn">
+		<part name="parameters" element="s0:GetServiceInformation"/>
+	</message>
+	<message name="GetServiceInformationOut">
+		<part name="parameters" element="s0:GetServiceInformationResponse"/>
+	</message>
+	<message name="GetSessionInformationIn">
+		<part name="parameters" element="s0:GetSessionInformation"/>
+	</message>
+	<message name="GetSessionInformationOut">
+		<part name="parameters" element="s0:GetSessionInformationResponse"/>
+	</message>
+	<message name="GetOtherUserDisplayNameIn">
+		<part name="parameters" element="s0:GetOtherUserDisplayName"/>
+	</message>
+	<message name="GetOtherUserDisplayNameOut">
+		<part name="parameters" element="s0:GetOtherUserDisplayNameResponse"/>
+	</message>
+	<message name="IsPermissionGrantedIn">
+		<part name="parameters" element="s0:IsPermissionGranted"/>
+	</message>
+	<message name="IsPermissionGrantedOut">
+		<part name="parameters" element="s0:IsPermissionGrantedResponse"/>
+	</message>
+	<message name="GetServiceBindingUrlIn">
+		<part name="parameters" element="s0:GetServiceBindingUrl"/>
+	</message>
+	<message name="GetServiceBindingUrlOut">
+		<part name="parameters" element="s0:GetServiceBindingUrlResponse"/>
+	</message>
+	<message name="SessionHeaderValue">
+		<part name="SessionHeaderValue" element="s0:SessionHeaderValue"/>
+	</message>
+	<portType name="SessionServiceSoap">
+		<operation name="GetBindings">
+			<input message="s0:GetBindingsIn"/>
+			<output message="s0:GetBindingsOut"/>
+		</operation>
+		<operation name="Login">
+			<input message="s0:LoginIn"/>
+			<output message="s0:LoginOut"/>
+		</operation>
+		<operation name="Logout">
+			<input message="s0:LogoutIn"/>
+			<output message="s0:LogoutOut"/>
+		</operation>
+		<operation name="GetServiceInformation">
+			<input message="s0:GetServiceInformationIn"/>
+			<output message="s0:GetServiceInformationOut"/>
+		</operation>
+		<operation name="GetSessionInformation">
+			<input message="s0:GetSessionInformationIn"/>
+			<output message="s0:GetSessionInformationOut"/>
+		</operation>
+		<operation name="GetOtherUserDisplayName">
+			<input message="s0:GetOtherUserDisplayNameIn"/>
+			<output message="s0:GetOtherUserDisplayNameOut"/>
+		</operation>
+		<operation name="IsPermissionGranted">
+			<input message="s0:IsPermissionGrantedIn"/>
+			<output message="s0:IsPermissionGrantedOut"/>
+		</operation>
+		<operation name="GetServiceBindingUrl">
+			<input message="s0:GetServiceBindingUrlIn"/>
+			<output message="s0:GetServiceBindingUrlOut"/>
+		</operation>
+	</portType>
+	<binding name="SessionServiceSoap" type="s0:SessionServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="GetBindings">
+			<soap:operation soapAction="#GetBindings" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Login">
+			<soap:operation soapAction="#Login" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="Logout">
+			<soap:operation soapAction="#Logout" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetServiceInformation">
+			<soap:operation soapAction="#GetServiceInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetSessionInformation">
+			<soap:operation soapAction="#GetSessionInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOtherUserDisplayName">
+			<soap:operation soapAction="#GetOtherUserDisplayName" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="IsPermissionGranted">
+			<soap:operation soapAction="#IsPermissionGranted" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetServiceBindingUrl">
+			<soap:operation soapAction="#GetServiceBindingUrl" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SessionService">
+		<port name="SessionServiceSoap" binding="s0:SessionServiceSoap">
+			<soap:address location="https://we4.ondemand.esker.com:443/EDPWS/EDPWS.dll?Handler=Default2"/>
+		</port>
+	</service>
+</definitions>

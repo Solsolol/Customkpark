@@ -1,0 +1,773 @@
+<?xml version="1.0"?>
+<!--
+Esker Web Services API Version 1.0
+Generated on Mon Jun 17 16:44:46 UTC+0200 2013
+Copyright 2011 Esker Software.
+All Rights Reserved
+-->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:SubmissionService2" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:SubmissionService2" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:SubmissionService2" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<s:element name="Submit">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="subject" type="s:string"/>
+						<s:element name="document" type="s0:BusinessData"/>
+						<s:element name="rules" type="s0:BusinessRules"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubmitResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:SubmissionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubmitTransport">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="transport" type="s0:Transport"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubmitTransportResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:SubmissionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubmitXML">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="xml" type="s0:XMLDescription"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SubmitXMLResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:SubmissionResults"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ExtractFirst">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="document" type="s0:BusinessData"/>
+						<s:element name="rules" type="s0:BusinessRules"/>
+						<s:element name="params" type="s0:ExtractionParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ExtractFirstResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ExtractionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ExtractNext">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="params" type="s0:ExtractionParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ExtractNextResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ExtractionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ConvertFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="inputFile" type="s0:WSFile"/>
+						<s:element name="params" type="s0:ConversionParameters"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ConvertFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ConversionResult"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="fileContent" type="s:base64Binary"/>
+						<s:element name="name" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFile">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="wsFile" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DownloadFileResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s:base64Binary"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RegisterResource">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="resource" type="s0:WSFile"/>
+						<s:element name="type" type="s0:RESOURCE_TYPE"/>
+						<s:element name="published" type="s:boolean"/>
+						<s:element name="overwritePrevious" type="s:boolean"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RegisterResourceResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ListResources">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="type" type="s0:RESOURCE_TYPE"/>
+						<s:element name="published" type="s:boolean"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ListResourcesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:Resources"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DeleteResource">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="resourceName" type="s:string"/>
+						<s:element name="type" type="s0:RESOURCE_TYPE"/>
+						<s:element name="published" type="s:boolean"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DeleteResourceResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RetrieveResource">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="resourceName" type="s:string"/>
+						<s:element name="type" type="s0:RESOURCE_TYPE"/>
+						<s:element name="published" type="s:boolean"/>
+						<s:element name="eMode" type="s0:WSFILE_MODE"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RetrieveResourceResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadFileAppend">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="fileContent" type="s:base64Binary"/>
+						<s:element name="destWSFile" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadFileAppendResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:WSFile"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:simpleType name="ATTACHMENTS_FILTER">
+				<s:restriction base="s:string">
+					<s:enumeration value="FILTER_NONE"/>
+					<s:enumeration value="FILTER_ALL"/>
+					<s:enumeration value="FILTER_CONVERTED"/>
+					<s:enumeration value="FILTER_SOURCE"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:simpleType name="RESOURCE_TYPE">
+				<s:restriction base="s:string">
+					<s:enumeration value="TYPE_SALESFORCE_LEAD_EMAILBODY"/>
+					<s:enumeration value="TYPE_SALESFORCE_LEAD_FAXCOVER"/>
+					<s:enumeration value="TYPE_SALESFORCE_CONTACT_EMAILBODY"/>
+					<s:enumeration value="TYPE_SALESFORCE_CONTACT_FAXCOVER"/>
+					<s:enumeration value="TYPE_SALESFORCE_SETTINGS"/>
+					<s:enumeration value="TYPE_STYLESHEET"/>
+					<s:enumeration value="TYPE_IMAGE"/>
+					<s:enumeration value="TYPE_COVER"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:simpleType name="WSFILE_MODE">
+				<s:restriction base="s:string">
+					<s:enumeration value="MODE_UNDEFINED"/>
+					<s:enumeration value="MODE_ON_SERVER"/>
+					<s:enumeration value="MODE_INLINED"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:simpleType name="VAR_TYPE">
+				<s:restriction base="s:string">
+					<s:enumeration value="TYPE_STRING"/>
+					<s:enumeration value="TYPE_DATETIME"/>
+					<s:enumeration value="TYPE_DOUBLE"/>
+					<s:enumeration value="TYPE_INTEGER"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="Transport">
+				<s:sequence>
+					<s:element name="transportName" type="s:string"/>
+					<s:element name="recipientType" type="s:string"/>
+					<s:element name="transportIndex" type="s:string"/>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nSubnodes" type="s:int"/>
+					<s:element name="subnodes" atls:SizeIs="nSubnodes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="SubNode" type="s0:SubNode" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nAttachments" type="s:int"/>
+					<s:element name="attachments" atls:SizeIs="nAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Attachment" type="s0:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Var">
+				<s:sequence>
+					<s:element name="attribute" type="s:string"/>
+					<s:element name="type" type="s0:VAR_TYPE"/>
+					<s:element name="simpleValue" type="s:string"/>
+					<s:element name="nValues" type="s:int"/>
+					<s:element name="multipleStringValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="multipleLongValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="int" type="s:int" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="multipleDoubleValues" atls:SizeIs="nValues" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="double" type="s:double" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="BusinessData">
+				<s:sequence>
+					<s:element name="file" type="s0:WSFile"/>
+					<s:element name="nExternalVars" type="s:int"/>
+					<s:element name="externalVars" atls:SizeIs="nExternalVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nAttachments" type="s:int"/>
+					<s:element name="attachments" atls:SizeIs="nAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Attachment" type="s0:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Attachment">
+				<s:sequence>
+					<s:element name="inputFormat" type="s:string"/>
+					<s:element name="outputFormat" type="s:string"/>
+					<s:element name="stylesheet" type="s:string"/>
+					<s:element name="outputName" type="s:string"/>
+					<s:element name="sourceAttachment" type="s0:WSFile"/>
+					<s:element name="nConvertedAttachments" type="s:int"/>
+					<s:element name="convertedAttachments" atls:SizeIs="nConvertedAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="WSFile" type="s0:WSFile" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="XMLDescription">
+				<s:sequence>
+					<s:element name="xmlFile" type="s0:WSFile"/>
+					<s:element name="nAttachments" type="s:int"/>
+					<s:element name="attachments" atls:SizeIs="nAttachments" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Attachment" type="s0:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SessionHeader">
+				<s:sequence>
+					<s:element name="sessionID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SubNode">
+				<s:sequence>
+					<s:element name="name" type="s:string"/>
+					<s:element name="relativeName" type="s:string"/>
+					<s:element name="nSubnodes" type="s:int"/>
+					<s:element name="subNodes" atls:SizeIs="nSubnodes" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+					<s:element name="nVars" type="s:int"/>
+					<s:element name="vars" atls:SizeIs="nVars" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Var" type="s0:Var" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ExtractionHeader">
+				<s:sequence>
+					<s:element name="ExtractionJobID" type="s:string"/>
+					<s:element name="ExtractionDocID" type="s:string"/>
+					<s:element name="offset" type="s:int"/>
+					<s:element name="transportIndex" type="s:int"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ExtractionResult">
+				<s:sequence>
+					<s:element name="noMoreItems" type="s:boolean"/>
+					<s:element name="nTransports" type="s:int"/>
+					<s:element name="transports" atls:SizeIs="nTransports" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="Transport" type="s0:Transport" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Resources">
+				<s:sequence>
+					<s:element name="nResources" type="s:int"/>
+					<s:element name="resources" atls:SizeIs="nResources" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="BusinessRules">
+				<s:sequence>
+					<s:element name="configurationName" type="s:string"/>
+					<s:element name="ruleName" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="WSFile">
+				<s:sequence>
+					<s:element name="name" type="s:string"/>
+					<s:element name="mode" type="s0:WSFILE_MODE"/>
+					<s:element name="content" type="s:base64Binary"/>
+					<s:element name="url" type="s:string"/>
+					<s:element name="storageID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SubmissionResult">
+				<s:sequence>
+					<s:element name="submissionID" type="s:string"/>
+					<s:element name="transportID" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ConversionResult">
+				<s:sequence>
+					<s:element name="convertedFile" type="s0:WSFile"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ConversionParameters">
+				<s:sequence>
+					<s:element name="inputType" type="s:string"/>
+					<s:element name="outputType" type="s:string"/>
+					<s:element name="customParameters" type="s:string"/>
+					<s:element name="outputFileMode" type="s0:WSFILE_MODE"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SubmissionResults">
+				<s:sequence>
+					<s:element name="submissionID" type="s:string"/>
+					<s:element name="nTransport" type="s:int"/>
+					<s:element name="transportIDs" atls:SizeIs="nTransport" nillable="true">
+						<s:complexType>
+							<s:sequence>
+								<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+							</s:sequence>
+						</s:complexType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ExtractionParameters">
+				<s:sequence>
+					<s:element name="nItems" type="s:int"/>
+					<s:element name="fullPreviewMode" type="s:boolean"/>
+					<s:element name="attachmentFilter" type="s0:ATTACHMENTS_FILTER"/>
+					<s:element name="outputFileMode" type="s0:WSFILE_MODE"/>
+					<s:element name="includeSubNodes" type="s:boolean"/>
+					<s:element name="startIndex" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="ExtractionHeaderValue" type="s0:ExtractionHeader"/>
+			<s:element name="SessionHeaderValue" type="s0:SessionHeader"/>
+		</s:schema>
+	</types>
+	<message name="SubmitIn">
+		<part name="parameters" element="s0:Submit"/>
+	</message>
+	<message name="SubmitOut">
+		<part name="parameters" element="s0:SubmitResponse"/>
+	</message>
+	<message name="SubmitTransportIn">
+		<part name="parameters" element="s0:SubmitTransport"/>
+	</message>
+	<message name="SubmitTransportOut">
+		<part name="parameters" element="s0:SubmitTransportResponse"/>
+	</message>
+	<message name="SubmitXMLIn">
+		<part name="parameters" element="s0:SubmitXML"/>
+	</message>
+	<message name="SubmitXMLOut">
+		<part name="parameters" element="s0:SubmitXMLResponse"/>
+	</message>
+	<message name="ExtractFirstIn">
+		<part name="parameters" element="s0:ExtractFirst"/>
+	</message>
+	<message name="ExtractFirstOut">
+		<part name="parameters" element="s0:ExtractFirstResponse"/>
+	</message>
+	<message name="ExtractNextIn">
+		<part name="parameters" element="s0:ExtractNext"/>
+	</message>
+	<message name="ExtractNextOut">
+		<part name="parameters" element="s0:ExtractNextResponse"/>
+	</message>
+	<message name="ConvertFileIn">
+		<part name="parameters" element="s0:ConvertFile"/>
+	</message>
+	<message name="ConvertFileOut">
+		<part name="parameters" element="s0:ConvertFileResponse"/>
+	</message>
+	<message name="UploadFileIn">
+		<part name="parameters" element="s0:UploadFile"/>
+	</message>
+	<message name="UploadFileOut">
+		<part name="parameters" element="s0:UploadFileResponse"/>
+	</message>
+	<message name="DownloadFileIn">
+		<part name="parameters" element="s0:DownloadFile"/>
+	</message>
+	<message name="DownloadFileOut">
+		<part name="parameters" element="s0:DownloadFileResponse"/>
+	</message>
+	<message name="RegisterResourceIn">
+		<part name="parameters" element="s0:RegisterResource"/>
+	</message>
+	<message name="RegisterResourceOut">
+		<part name="parameters" element="s0:RegisterResourceResponse"/>
+	</message>
+	<message name="ListResourcesIn">
+		<part name="parameters" element="s0:ListResources"/>
+	</message>
+	<message name="ListResourcesOut">
+		<part name="parameters" element="s0:ListResourcesResponse"/>
+	</message>
+	<message name="DeleteResourceIn">
+		<part name="parameters" element="s0:DeleteResource"/>
+	</message>
+	<message name="DeleteResourceOut">
+		<part name="parameters" element="s0:DeleteResourceResponse"/>
+	</message>
+	<message name="RetrieveResourceIn">
+		<part name="parameters" element="s0:RetrieveResource"/>
+	</message>
+	<message name="RetrieveResourceOut">
+		<part name="parameters" element="s0:RetrieveResourceResponse"/>
+	</message>
+	<message name="UploadFileAppendIn">
+		<part name="parameters" element="s0:UploadFileAppend"/>
+	</message>
+	<message name="UploadFileAppendOut">
+		<part name="parameters" element="s0:UploadFileAppendResponse"/>
+	</message>
+	<message name="ExtractionHeaderValue">
+		<part name="ExtractionHeaderValue" element="s0:ExtractionHeaderValue"/>
+	</message>
+	<message name="SessionHeaderValue">
+		<part name="SessionHeaderValue" element="s0:SessionHeaderValue"/>
+	</message>
+	<portType name="SubmissionServiceSoap">
+		<operation name="Submit">
+			<input message="s0:SubmitIn"/>
+			<output message="s0:SubmitOut"/>
+		</operation>
+		<operation name="SubmitTransport">
+			<input message="s0:SubmitTransportIn"/>
+			<output message="s0:SubmitTransportOut"/>
+		</operation>
+		<operation name="SubmitXML">
+			<input message="s0:SubmitXMLIn"/>
+			<output message="s0:SubmitXMLOut"/>
+		</operation>
+		<operation name="ExtractFirst">
+			<input message="s0:ExtractFirstIn"/>
+			<output message="s0:ExtractFirstOut"/>
+		</operation>
+		<operation name="ExtractNext">
+			<input message="s0:ExtractNextIn"/>
+			<output message="s0:ExtractNextOut"/>
+		</operation>
+		<operation name="ConvertFile">
+			<input message="s0:ConvertFileIn"/>
+			<output message="s0:ConvertFileOut"/>
+		</operation>
+		<operation name="UploadFile">
+			<input message="s0:UploadFileIn"/>
+			<output message="s0:UploadFileOut"/>
+		</operation>
+		<operation name="DownloadFile">
+			<input message="s0:DownloadFileIn"/>
+			<output message="s0:DownloadFileOut"/>
+		</operation>
+		<operation name="RegisterResource">
+			<input message="s0:RegisterResourceIn"/>
+			<output message="s0:RegisterResourceOut"/>
+		</operation>
+		<operation name="ListResources">
+			<input message="s0:ListResourcesIn"/>
+			<output message="s0:ListResourcesOut"/>
+		</operation>
+		<operation name="DeleteResource">
+			<input message="s0:DeleteResourceIn"/>
+			<output message="s0:DeleteResourceOut"/>
+		</operation>
+		<operation name="RetrieveResource">
+			<input message="s0:RetrieveResourceIn"/>
+			<output message="s0:RetrieveResourceOut"/>
+		</operation>
+		<operation name="UploadFileAppend">
+			<input message="s0:UploadFileAppendIn"/>
+			<output message="s0:UploadFileAppendOut"/>
+		</operation>
+	</portType>
+	<binding name="SubmissionServiceSoap" type="s0:SubmissionServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="Submit">
+			<soap:operation soapAction="#Submit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SubmitTransport">
+			<soap:operation soapAction="#SubmitTransport" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SubmitXML">
+			<soap:operation soapAction="#SubmitXML" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ExtractFirst">
+			<soap:operation soapAction="#ExtractFirst" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:ExtractionHeaderValue" part="ExtractionHeaderValue"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="ExtractNext">
+			<soap:operation soapAction="#ExtractNext" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+				<soap:header message="s0:ExtractionHeaderValue" part="ExtractionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:ExtractionHeaderValue" part="ExtractionHeaderValue"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="ConvertFile">
+			<soap:operation soapAction="#ConvertFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UploadFile">
+			<soap:operation soapAction="#UploadFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DownloadFile">
+			<soap:operation soapAction="#DownloadFile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="RegisterResource">
+			<soap:operation soapAction="#RegisterResource" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ListResources">
+			<soap:operation soapAction="#ListResources" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteResource">
+			<soap:operation soapAction="#DeleteResource" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="RetrieveResource">
+			<soap:operation soapAction="#RetrieveResource" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UploadFileAppend">
+			<soap:operation soapAction="#UploadFileAppend" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:SessionHeaderValue" part="SessionHeaderValue" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SubmissionService">
+		<port name="SubmissionServiceSoap" binding="s0:SubmissionServiceSoap">
+			<soap:address location="https://we4.ondemand.esker.com:443/EDPWS/EDPWS.dll?Handler=Submission2Handler"/>
+		</port>
+	</service>
+</definitions>

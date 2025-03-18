@@ -1,0 +1,32 @@
+{
+  "name": "merkure",
+  "version": "1.0.0",
+  "description": "Backend application for the activity of sending postal mail via Neotouch and to generate PDF via Carbone.IO",
+  "main": "backend/app.js",
+  "scripts": {
+    "start": "node backend/app.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@salesforce-ux/design-system": "^2.12.2",
+    "express": "^4.17.1",
+    "got": "^11.6.0",
+    "jsforce": "^1.9.3",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "node-cron": "^2.0.3",
+    "pdf-lib": "^1.16.0",
+    "pg": "^8.3.0",
+    "strong-soap": "^3.2.1",
+    "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1"
+  },
+  "options": {
+    "marketingCloud": {
+      "jwtSecret": "gSuPRn3rmPR0_DMfmsK3I8IUUcD0hhSd3Iap4vC-btZsPV4sX3FODgQ4APgou3lOxCEsWW3SoK0Bw121PTFz3jzRJx3KJe6BzJztoceUTH1uLsZx9nGZxOEWQYpfiYLvofP1Ea5Eka0TWwdEK3MoaC5CflUKPF2V7opdnBrL5R90BxrHpukFgxrE8oazLrykpIXD8FjOQrSqCYWaQad-VxNseg5evwsUlP_DQmP2_B7cjUT7_TYwkI5aL6_97w2"
+    }
+  },
+  "author": "Sopra Steria"
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Envoi d'un courrier postal - Assistant</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script data-main="js/main.js" type="text/javascript" src="js/require.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/slds/styles/salesforce-lightning-design-system.min.css" />
+	<style type="text/css">
+		html {
+			background-color: white;
+		}
+
+		.step {
+			display: none;
+		}
+
+		#step1 {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="step1" class="step">
+        <h3 class="slds-section-title--divider">Modèle de document</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-input-docid">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> ID du modèle de document
+				</label>
+				<div class="slds-form-element__control">
+					<input id="other-input-docid" class="slds-input" type="text" placeholder="ID du modèle de document provenant de Carbone.io" required />
+				</div>
+			</div>
+		</div>
+
+		<h3 class="slds-section-title--divider">Informations de Salesforce et du client</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-select-recordSaveId">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Champ Salesforce stockant l'Id de l'enregistrement pour lier les documents
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-recordSaveId" class="slds-select">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-select-customerName">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Champ Salesforce stockant le nom du client
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerName" class="slds-select">
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <h3 class="slds-section-title--divider">Informations de l'adresse</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">			
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-select-customerStreet">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Champ Salesforce stockant la rue du client
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerStreet" class="slds-select">
+						</select>
+					</div>
+				</div>
+			</div>			
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="other-select-customerStreetCompl">Champ Salesforce stockant le complement d'adresse du client</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerStreetCompl" class="slds-select">
+							<option value="">-- Aucun -- </option>
+						</select>
+					</div>
+				</div>
+			</div>			
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-select-customerPostalCode">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Champ Salesforce stockant le code postal du client
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerPostalCode" class="slds-select">
+						</select>
+					</div>
+				</div>
+			</div>			
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="other-select-customerCity">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Champ Salesforce stockant la ville du client
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerCity" class="slds-select">
+						</select>
+					</div>
+				</div>
+			</div>			
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="other-select-customerCountry">Champ Salesforce stockant le pays du client</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="other-select-customerCountry" class="slds-select">
+							<option value="" selected>-- Aucun -- </option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="step2" class="step">
+        <h3 class="slds-section-title--divider">Informations de l'expéditeur</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-input-fromCompany">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Nom de la société
+				</label>
+				<div class="slds-form-element__control">
+					<input id="postalmail-input-fromCompany" class="slds-input" type="text" placeholder="Nom de la société" required value="K par K"/>
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="postalmail-input-fromName">Nom du service d'expédition</label>
+				<div class="slds-form-element__control">
+					<input id="postalmail-input-fromName" class="slds-input" type="text" placeholder="Nom de l'expéditeur (service)"/>
+				</div>
+			</div>
+		</div>
+
+        <h3 class="slds-section-title--divider">Informations d'affranchissement</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-select-stampType">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Type d'affranchissement
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="postalmail-select-stampType" class="slds-select">
+							<option value="U" selected>Courrier prioritaire</option>
+							<option value="E">Ecopli</option>
+							<option value="R1">Recommandé (R1)</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="step3" class="step">
+        <h3 class="slds-section-title--divider">Informations d'impression</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-select-color">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Impression en couleur
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="postalmail-select-color" class="slds-select">
+							<option value="Y" selected>Oui</option>
+							<option value="N">Non</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-select-bothSided">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Impression recto/verso
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="postalmail-select-bothSided" class="slds-select">
+							<option value="Y" selected>Oui</option>
+							<option value="N">Non</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-select-cover">
+					<abbr class="slds-required" title="Obligatoire">*</abbr> Page d'adresse avant le document
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="postalmail-select-cover" class="slds-select">
+							<option value="Y" selected>Oui</option>
+							<option value="N">Non</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <h3 class="slds-section-title--divider">Autres informations du courrier</h3>
+		<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+			<div class="slds-form-element is-required">
+				<label class="slds-form-element__label" for="postalmail-select-needValidation">Validation avant envoi</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<select id="postalmail-select-needValidation" class="slds-select">
+							<option value="1" selected>Oui</option>
+							<option value="0">Non</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
